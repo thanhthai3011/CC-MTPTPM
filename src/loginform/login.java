@@ -129,6 +129,7 @@ public class login extends javax.swing.JFrame {
     //create login button panel
     private JPanel createLoginButtonPanel() {
         JPanel panel = new JPanel(new FlowLayout());
+        //Thanh update
         panel.add(new JButton("Login"));
         panel.add(new JButton("Cancel"));
         return panel;
