@@ -9,24 +9,33 @@ package loginform;
  *
  * @author DELL
  */
-import java.awt.BorderLayout;
-import java.awt.GridLayout;
-import java.awt.FlowLayout;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
-public class login extends javax.swing.JFrame {
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+public class login extends  JFrame implements ActionListener  {
 
     /**
      * Creates new form login
      */
-    public login() {
-        createJFrame();
+    Container container = getContentPane();
+    JLabel userLabel = new JLabel("USERNAME");
+    JLabel passwordLabel = new JLabel("PASSWORD");
+    JTextField userTextField = new JTextField();
+    JPasswordField passwordField = new JPasswordField();
+    JButton loginButton = new JButton("LOGIN");
+    JButton resetButton = new JButton("RESET");
+    JCheckBox showPassword = new JCheckBox("Show Password");
+    login() {
+        setLayoutManager();
+        setLocationAndSize();
+        addComponentsToContainer();
+        addActionEvent();
+
     }
+//    public login() {
+//        createJFrame();
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -84,54 +93,36 @@ public class login extends javax.swing.JFrame {
         new login();
     }
     
-    private void createJFrame() {
-        setTitle("Login Form");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(400, 200);
-        //add main panel
-        add(createMainPanel());
-        //display
-        setLocationRelativeTo(null);
-        setVisible(true);
-    }
-    
-    private JPanel createMainPanel() {
-        JPanel panel = new JPanel(new BorderLayout(10, 10));
-        panel.add(createTitlePanel(), BorderLayout.NORTH);
-        panel.add(createNamePanel(), BorderLayout.WEST);
-        panel.add(createInputPanel(), BorderLayout.CENTER);
-        panel.add(createLoginButtonPanel(), BorderLayout.SOUTH);
-        return panel;
+    public void setLayoutManager() {
+        container.setLayout(null);
     }
 
-    //create title panel
-    private JPanel createTitlePanel() {
-        JPanel panel = new JPanel();
-        panel.add(new JLabel("Login to my form"));
-        return panel;
-    }
-    
-    private JPanel createNamePanel() {
-        JPanel panel = new JPanel(new GridLayout(2, 1, 5, 5));
-        panel.add(new JLabel("Username: "));
-        panel.add(new JLabel("Password: "));
-        return panel;
+    public void setLocationAndSize() {
+        userLabel.setBounds(50, 150, 100, 30);
+        passwordLabel.setBounds(50, 220, 100, 30);
+        userTextField.setBounds(150, 150, 150, 30);
+        passwordField.setBounds(150, 220, 150, 30);
+        showPassword.setBounds(150, 250, 150, 30);
+        loginButton.setBounds(50, 300, 100, 30);
+        resetButton.setBounds(200, 300, 100, 30);
+
+
     }
 
-    //create Input panel
-    private JPanel createInputPanel() {
-        JPanel panel = new JPanel(new GridLayout(2, 1, 5, 5));
-        panel.add(new JTextField(25));
-        panel.add(new JPasswordField(20));
-        return panel;
+    public void addComponentsToContainer() {
+        container.add(userLabel);
+        container.add(passwordLabel);
+        container.add(userTextField);
+        container.add(passwordField);
+        container.add(showPassword);
+        container.add(loginButton);
+        container.add(resetButton);
     }
 
-    //create login button panel
-    private JPanel createLoginButtonPanel() {
-        JPanel panel = new JPanel(new FlowLayout());
-        panel.add(new JButton("Login"));
-        panel.add(new JButton("Cancel"));
-        return panel;
+    public void addActionEvent() {
+        loginButton.addActionListener(this);
+        resetButton.addActionListener(this);
+        showPassword.addActionListener(this);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
