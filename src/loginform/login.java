@@ -90,7 +90,13 @@ public class login extends  JFrame implements ActionListener  {
         //</editor-fold>
 
         /* Create and display the form */
-        new login();
+        login frame = new login();
+        frame.setTitle("Login Form");
+        frame.setVisible(true);
+        frame.setBounds(10, 10, 370, 600);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setResizable(false);
+
     }
     
     public void setLayoutManager() {
@@ -123,6 +129,35 @@ public class login extends  JFrame implements ActionListener  {
         loginButton.addActionListener(this);
         resetButton.addActionListener(this);
         showPassword.addActionListener(this);
+    }
+    
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == loginButton) {
+            String userText;
+            String pwdText;
+            userText = userTextField.getText();
+            pwdText = passwordField.getText();
+            if (userText.equalsIgnoreCase("admin") && pwdText.equalsIgnoreCase("12345")) {
+                JOptionPane.showMessageDialog(this, "Login Successful");
+            } else {
+                JOptionPane.showMessageDialog(this, "Invalid Username or Password");
+            }
+
+        }
+        if (e.getSource() == resetButton) {
+            userTextField.setText("");
+            passwordField.setText("");
+        }
+        if (e.getSource() == showPassword) {
+            if (showPassword.isSelected()) {
+                passwordField.setEchoChar((char) 0);
+            } else {
+                passwordField.setEchoChar('*');
+            }
+
+
+        }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
