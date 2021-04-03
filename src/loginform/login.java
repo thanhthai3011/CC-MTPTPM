@@ -99,7 +99,7 @@ public class login extends javax.swing.JFrame {
         JPanel panel = new JPanel(new BorderLayout(10, 10));
         panel.add(createTitlePanel(), BorderLayout.NORTH);
         panel.add(createNamePanel(), BorderLayout.WEST);
-//        panel.add(createInputPanel(), BorderLayout.CENTER);
+        panel.add(createInputPanel(), BorderLayout.CENTER);
         panel.add(createLoginButtonPanel(), BorderLayout.SOUTH);
         return panel;
     }
@@ -113,7 +113,7 @@ public class login extends javax.swing.JFrame {
     
     private JPanel createNamePanel() {
         JPanel panel = new JPanel(new GridLayout(2, 1, 5, 5));
-//        panel.add(new JLabel("Username: "));
+        panel.add(new JLabel("Username: "));
         panel.add(new JLabel("Password: "));
         return panel;
     }
@@ -121,7 +121,7 @@ public class login extends javax.swing.JFrame {
     //create Input panel
     private JPanel createInputPanel() {
         JPanel panel = new JPanel(new GridLayout(2, 1, 5, 5));
-//        panel.add(new JTextField(25));
+        panel.add(new JTextField(25));
         panel.add(new JPasswordField(20));
         return panel;
     }
